@@ -15,7 +15,9 @@ public class Program
         Parser newparse = new Parser();
 
         TableDisplayer table = new TableDisplayer(newparse, Col.CornflowerBlue);
+        table.Display();
         table.DisplayNames();
+        table.DisplayCities();
     }
 }
 

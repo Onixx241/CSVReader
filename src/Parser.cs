@@ -23,28 +23,31 @@ public class Parser
         }
     }
 
-    public void ListCities(string filepath)
+    //these two seem like DRY violations...
+    public List<string> GetNames(string filepath) 
     {
         List<PersonInfo> people = GetPersonInfos(filepath);
+        List<string> names = new List<string>();
 
-        foreach (PersonInfo person in people)
+        foreach (PersonInfo person in people) 
         {
-            Console.WriteLine($"{person.city}");
+            names.Add(person.Name);
         }
+
+        return names;
     }
 
-
-    //change to render table
-    public void PrintCSV(string filepath)
+    public List<string> GetCities(string filepath)
     {
-
         List<PersonInfo> people = GetPersonInfos(filepath);
+        List<string> cities = new List<string>();
 
-        Console.WriteLine("Name | LastName | Address | City | State | Zip |");
-        foreach (PersonInfo person in people)
+        foreach (PersonInfo person in people) 
         {
-            Console.WriteLine($"{person.Name} | {person.lastName} | {person.address} | {person.city} | {person.state} | {person.zip}");
+            cities.Add(person.city);
         }
 
+        return cities;
     }
+
 }
