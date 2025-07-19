@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using Spectre.Console;
 using System.Drawing;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
@@ -11,13 +12,14 @@ public class Program
 {
     public static void Main() 
     {
-
         Parser newparse = new Parser();
 
-        TableDisplayer table = new TableDisplayer(newparse, Col.CornflowerBlue);
-        table.Display();
-        table.DisplayNames();
-        table.DisplayCities();
+        TableDisplayer table = new TableDisplayer(newparse, Col.Aquamarine1);
+
+        table.Display(newparse.GetPersonInfos(Constants.filepath), true);
+        
     }
 }
+
+
 

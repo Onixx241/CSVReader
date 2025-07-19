@@ -7,7 +7,7 @@ using Spectre.Console;
 
 public class TableDisplayer : IDisplay
 {
-    public Color tableColor { get; set; } = Color.Black;
+    public Color tableColor { get; set; } = Color.White;
 
     Parser listOfPeople { get; set; }
 
@@ -22,7 +22,7 @@ public class TableDisplayer : IDisplay
         this.tableColor = tableColor;
     }
 
-    public void Display()
+    public void Display(List<PersonInfo> people,bool isAlphabetical)
     {
 
         var table = new Table();
@@ -34,13 +34,26 @@ public class TableDisplayer : IDisplay
         table.AddColumn("state");
         table.AddColumn("zip");
 
+        table.Border = TableBorder.Rounded;
         table.BorderColor(this.tableColor);
         table.ShowRowSeparators = true;
         table.Centered();
 
-        foreach (PersonInfo person in this.listOfPeople.GetPersonInfos(Constants.filepath))
+        if (!isAlphabetical)
         {
-            table.AddRow(person.Name, person.lastName, person.address, person.city, person.state, person.zip);
+
+            foreach (PersonInfo person in people)
+            {
+                table.AddRow(person.Name, person.lastName, person.address, person.city, person.state, person.zip);
+            }
+
+        }
+        else if(isAlphabetical) 
+        {
+            foreach (PersonInfo person in this.listOfPeople.SortPeopleAlphabetically(people)) 
+            {
+                table.AddRow(person.Name, person.lastName, person.address, person.city, person.state, person.zip);
+            }
         }
 
 

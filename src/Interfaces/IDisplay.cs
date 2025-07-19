@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public interface IDisplay 
 {
-    public void Display();
+    public void Display(List<PersonInfo> person, bool isAlphabetical);
     public void DisplayNames();
     public void DisplayCities();
 
