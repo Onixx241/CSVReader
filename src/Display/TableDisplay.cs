@@ -61,13 +61,13 @@ public class TableDisplayer : IDisplay
         AnsiConsole.Write(table);
 
     }
-
-    public void DisplayNames() 
+ 
+    public void DisplaySingleColumn(string columnName, Func<PersonInfo,string> property) 
     {
 
         var table = new Table();
 
-        table.AddColumn("Names");
+        table.AddColumn(columnName);
 
         table.Border(TableBorder.HeavyHead);
         table.BorderColor(this.tableColor);
@@ -76,36 +76,14 @@ public class TableDisplayer : IDisplay
 
         table.Width = 75;
 
-        foreach (string name in this.listOfPeople.GetNames(Constants.filepath)) 
+        foreach (string info in this.listOfPeople.GetColumn(Constants.filepath, property)) 
         {
-            table.AddRow(name);
+            table.AddRow(info);
         }
 
         AnsiConsole.Write(table);
 
     }
 
-    public void DisplayCities() 
-    {
-        var table = new Table();
-
-        table.AddColumn("Cities");
-
-        table.Border(TableBorder.HeavyHead);
-        table.BorderColor(this.tableColor);
-
-        table.Centered();
-
-        table.Width = 75;
-
-
-        foreach (string city in this.listOfPeople.GetCities(Constants.filepath)) 
-        {
-            table.AddRow(city);
-        }
-
-        AnsiConsole.Write(table);
-
-
-    }
+    
 }

@@ -24,34 +24,19 @@ public class Parser
         }
     }
 
-    //these two seem like DRY violations...
-    public List<string> GetNames(string filepath)
+    public List<string> GetColumn(string filepath, Func<PersonInfo, string> property)
     {
+
         List<PersonInfo> people = GetPersonInfos(filepath);
-        List<string> names = new List<string>();
+        List<string> list = new List<string>();
         //maybe make a separate sorted list for when sorting is activated.
         foreach (PersonInfo person in people)
         {
-            names.Sort();
-            names.Add(person.Name);
+            list.Add(property(person));
         }
 
-        return names;
-    }
+        return list;
 
-
-    //maybe change these two params to take List<PersonInfo>
-    public List<string> GetCities(string filepath)
-    {
-        List<PersonInfo> people = GetPersonInfos(filepath);
-        List<string> cities = new List<string>();
-
-        foreach (PersonInfo person in people)
-        {
-            cities.Add(person.city);
-        }
-
-        return cities;
     }
 
     public List<PersonInfo> SortPeopleAlphabetically(List<PersonInfo> people)
@@ -69,3 +54,4 @@ public class Parser
     }
 
 }
+

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 public interface IDisplay 
 {
     public void Display(List<PersonInfo> person, bool isAlphabetical);
-    public void DisplayNames();
-    public void DisplayCities();
+    public void DisplaySingleColumn(string columnName, Func<PersonInfo, string> property);
 
 }
