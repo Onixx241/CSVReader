@@ -22,7 +22,4 @@ public class Program
     }
 }
 
-//Sorting: Allow users to sort the table by any column interactively. - on it
-//Filtering: Implement a way to filter rows based on column values (e.g., search or show only rows where "status" is "active").
-//Column Selection: Let users choose which columns to display.
 
